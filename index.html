@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upgrade Freight &amp; Profit</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade Freight & Profit</title>
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
     * { box-sizing: border-box; }
@@ -25,20 +25,21 @@
       padding: 24px;
       max-width: 480px;
       width: 100%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     }
-    h2 { margin: 0 0 8px; font-size: 20px; color: #facc15; }
-    p.desc {
-      margin: 0 0 14px;
-      font-size: 13px;
-      color: #e2e8f0;
-      line-height: 1.5;
+    h2 { margin: 0 0 6px; font-size: 21px; color: #facc15; }
+    p.sub { margin: 0 0 12px; font-size: 13px; color: #cbd5e1; line-height: 1.45; }
+    .product-box {
       background: #0f172a;
       border: 1px solid #334155;
       border-radius: 10px;
-      padding: 12px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.5;
     }
-    p.desc strong { color: #facc15; }
-    p.sub { margin: 0 0 16px; font-size: 13px; color: #cbd5e1; line-height: 1.45; }
+    .product-box strong { color: #f8fafc; }
     label { display: block; font-size: 12px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
     input {
       width: 100%;
@@ -65,20 +66,27 @@
       justify-content: space-between;
       align-items: center;
       text-align: left;
+      transition: transform 0.1s ease, opacity 0.15s ease;
     }
+    .plan-btn:active { transform: scale(0.99); }
     .plan-btn small {
       display: block;
+      font-size: 11px;
       font-weight: 400;
-      font-size: 11.5px;
-      opacity: 0.85;
       margin-top: 2px;
+      opacity: 0.85;
     }
     .plan-btn.gold {
       background: #facc15;
       color: #0f172a;
       border-color: #facc15;
     }
-    #msg { margin-top: 12px; font-size: 13px; color: #4ade80; text-align: center; }
+    .plan-price {
+      white-space: nowrap;
+      margin-left: 12px;
+      font-weight: 800;
+    }
+    #msg { margin-top: 12px; font-size: 13px; color: #4ade80; text-align: center; line-height: 1.4; }
     .legal {
       margin-top: 18px;
       padding-top: 14px;
@@ -86,23 +94,24 @@
       text-align: center;
       font-size: 12px;
       color: #94a3b8;
+      line-height: 1.6;
     }
     .legal a { color: #facc15; text-decoration: none; margin: 0 6px; }
     .entity {
-      margin-top: 10px;
+      margin-top: 8px;
       font-size: 11px;
-      color: #94a3b8;
-      line-height: 1.45;
+      color: #64748b;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <h2>Upgrade Freight &amp; Profit</h2>
-    <p class="desc">
-      <strong>Freight &amp; Profit</strong> is an import/export landed cost, customs duty, and profit-margin calculator SaaS for importers, resellers, and trading businesses. Upgrade below to unlock multi-item shipment splitting, on-device OCR invoice scanning, supplier HS tariff books, and PDF quotes across Web, Android, and iOS.
-    </p>
     <p class="sub">Confirm your account email and ID below, then choose your plan to complete checkout.</p>
+
+    <div class="product-box">
+      <strong>About Freight &amp; Profit:</strong> An import/export landed cost, customs duty, VAT, and profit-margin calculator SaaS for importers, resellers, and small trading businesses across Web, Android, and iOS.
+    </div>
 
     <label for="emailInput">App Account Email (Required)</label>
     <input id="emailInput" type="email" placeholder="you@example.com" required />
@@ -111,51 +120,65 @@
     <input id="uidInput" type="text" placeholder="Account ID" />
 
     <button class="plan-btn gold" onclick="startCheckout('pri_01m84ss69zrk713341jf6eb795')">
-      <div>
-        <span>Solo Business / Pro · Monthly</span>
-        <small>Unlimited orders, OCR scanner, shipment splitter &amp; PDF quotes</small>
-      </div>
-      <span>$19 / mo</span>
+      <span>
+        Solo Business / Pro &middot; Monthly
+        <small>Unlimited orders, shipment splitter, OCR scanner &amp; PDF quotes</small>
+      </span>
+      <span class="plan-price">$19 / mo</span>
     </button>
+
     <button class="plan-btn gold" onclick="startCheckout('pri_01m84saq5d9jv8q51e1pexn5r9')">
-      <div>
-        <span>Solo Business / Pro · Lifetime</span>
-        <small>One-time payment · All Solo Business Pro features forever</small>
-      </div>
-      <span>$199 once</span>
+      <span>
+        Solo Business / Pro &middot; Lifetime
+        <small>One-time payment &middot; Full Pro features unlocked permanently</small>
+      </span>
+      <span class="plan-price">$199 once</span>
     </button>
+
     <button class="plan-btn" onclick="startCheckout('pri_01m847x8y1btzy1zacptnv1jn2')">
-      <div>
-        <span>Enterprise / Team · Monthly</span>
-        <small>Up to 5 team members, branded proforma invoices &amp; analytics</small>
-      </div>
-      <span>$39 / mo</span>
+      <span>
+        Enterprise / Team &middot; Monthly
+        <small>Up to 5 team users, logo proforma invoices &amp; executive analytics</small>
+      </span>
+      <span class="plan-price">$39 / mo</span>
     </button>
+
     <button class="plan-btn" onclick="startCheckout('pri_01m847akfzp4rnkm1m1pgbnkw4')">
-      <div>
-        <span>Enterprise / Team · Lifetime</span>
-        <small>One-time payment · Full Enterprise &amp; Team workspace forever</small>
-      </div>
-      <span>$349 once</span>
+      <span>
+        Enterprise / Team &middot; Lifetime
+        <small>One-time payment &middot; Full Team workspace unlocked permanently</small>
+      </span>
+      <span class="plan-price">$349 once</span>
     </button>
 
     <div id="msg"></div>
 
     <div class="legal">
-      <a href="https://www.freightandprofit.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a> ·
-      <a href="https://www.freightandprofit.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a> ·
-      <a href="https://www.freightandprofit.com/refund-policy" target="_blank" rel="noopener">Refund Policy</a>
+      <a href="https://www.freightandprofit.com/terms-of-service" target="_blank">Terms of Service</a> &middot;
+      <a href="https://www.freightandprofit.com/privacy-policy" target="_blank">Privacy Policy</a> &middot;
+      <a href="https://www.freightandprofit.com/refund-policy" target="_blank">Refund Policy</a>
       <div class="entity">
-        Operated by Sherlene Anicia Dalrymple · Trinidad and Tobago<br>
-        Support &amp; Billing: support.freightandprofit@gmail.com · &copy; 2026 Freight &amp; Profit
+        Operated by Sherlene Anicia Dalrymple &middot; Trinidad and Tobago<br />
+        Billing &amp; Support: support.freightandprofit@gmail.com
       </div>
     </div>
   </div>
 
   <script>
+    const VALID_PRICES = [
+      'pri_01m84ss69zrk713341jf6eb795',
+      'pri_01m84saq5d9jv8q51e1pexn5r9',
+      'pri_01m847x8y1btzy1zacptnv1jn2',
+      'pri_01m847akfzp4rnkm1m1pgbnkw4'
+    ];
+
     const params = new URLSearchParams(window.location.search);
-    if (params.get('email')) document.getElementById('emailInput').value = params.get('email');
-    if (params.get('uid')) document.getElementById('uidInput').value = params.get('uid');
+    const urlEmail = params.get('email') || '';
+    const urlUid = params.get('uid') || params.get('userId') || '';
+    const urlPriceId = params.get('priceId') || params.get('price_id') || params.get('pri') || '';
+
+    if (urlEmail) document.getElementById('emailInput').value = urlEmail;
+    if (urlUid) document.getElementById('uidInput').value = urlUid;
 
     Paddle.Initialize({
       token: 'live_6d1c9d033eb61a3a642d45e31d3',
@@ -187,6 +210,14 @@
       }
       Paddle.Checkout.open(options);
     }
+
+    window.addEventListener('load', function() {
+      if (urlEmail && urlPriceId && VALID_PRICES.includes(urlPriceId)) {
+        setTimeout(function() {
+          startCheckout(urlPriceId);
+        }, 350);
+      }
+    });
   </script>
 </body>
 </html>
