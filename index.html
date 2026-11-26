@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upgrade Freight & Profit</title>
+  <title>Upgrade Freight &amp; Profit — Checkout</title>
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
     * { box-sizing: border-box; }
@@ -25,7 +25,6 @@
       padding: 24px;
       max-width: 480px;
       width: 100%;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     }
     h2 { margin: 0 0 6px; font-size: 21px; color: #facc15; }
     p.sub { margin: 0 0 12px; font-size: 13px; color: #cbd5e1; line-height: 1.45; }
@@ -33,7 +32,7 @@
       background: #0f172a;
       border: 1px solid #334155;
       border-radius: 10px;
-      padding: 12px 14px;
+      padding: 12px;
       margin-bottom: 16px;
       font-size: 12.5px;
       color: #cbd5e1;
@@ -66,27 +65,20 @@
       justify-content: space-between;
       align-items: center;
       text-align: left;
-      transition: transform 0.1s ease, opacity 0.15s ease;
-    }
-    .plan-btn:active { transform: scale(0.99); }
-    .plan-btn small {
-      display: block;
-      font-size: 11px;
-      font-weight: 400;
-      margin-top: 2px;
-      opacity: 0.85;
     }
     .plan-btn.gold {
       background: #facc15;
       color: #0f172a;
       border-color: #facc15;
     }
-    .plan-price {
-      white-space: nowrap;
-      margin-left: 12px;
-      font-weight: 800;
+    .plan-meta {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.85;
+      margin-top: 2px;
     }
-    #msg { margin-top: 12px; font-size: 13px; color: #4ade80; text-align: center; line-height: 1.4; }
+    #msg { margin-top: 12px; font-size: 13px; color: #4ade80; text-align: center; }
     .legal {
       margin-top: 18px;
       padding-top: 14px;
@@ -110,7 +102,7 @@
     <p class="sub">Confirm your account email and ID below, then choose your plan to complete checkout.</p>
 
     <div class="product-box">
-      <strong>About Freight &amp; Profit:</strong> An import/export landed cost, customs duty, VAT, and profit-margin calculator SaaS for importers, resellers, and small trading businesses across Web, Android, and iOS.
+      <strong>Freight &amp; Profit</strong> is an import/export landed cost, customs duty, and profit-margin calculator SaaS for importers, resellers, and trading businesses across Web, Android, and iOS.
     </div>
 
     <label for="emailInput">App Account Email (Required)</label>
@@ -121,73 +113,85 @@
 
     <button class="plan-btn gold" onclick="startCheckout('pri_01m84ss69zrk713341jf6eb795')">
       <span>
-        Solo Business / Pro &middot; Monthly
-        <small>Unlimited orders, shipment splitter, OCR scanner &amp; PDF quotes</small>
+        Solo Business / Pro · Monthly
+        <span class="plan-meta">Unlimited calculations, multi-item splitting &amp; PDF quotes</span>
       </span>
-      <span class="plan-price">$19 / mo</span>
+      <span>$19 / mo</span>
     </button>
 
     <button class="plan-btn gold" onclick="startCheckout('pri_01m84saq5d9jv8q51e1pexn5r9')">
       <span>
-        Solo Business / Pro &middot; Lifetime
-        <small>One-time payment &middot; Full Pro features unlocked permanently</small>
+        Solo Business / Pro · Lifetime
+        <span class="plan-meta">One-time payment · Lifetime Solo Business / Pro access</span>
       </span>
-      <span class="plan-price">$199 once</span>
+      <span>$199 once</span>
     </button>
 
     <button class="plan-btn" onclick="startCheckout('pri_01m847x8y1btzy1zacptnv1jn2')">
       <span>
-        Enterprise / Team &middot; Monthly
-        <small>Up to 5 team users, logo proforma invoices &amp; executive analytics</small>
+        Enterprise / Team · Monthly
+        <span class="plan-meta">Multi-user team workspace, OCR scanning &amp; cloud sync</span>
       </span>
-      <span class="plan-price">$39 / mo</span>
+      <span>$39 / mo</span>
     </button>
 
     <button class="plan-btn" onclick="startCheckout('pri_01m847akfzp4rnkm1m1pgbnkw4')">
       <span>
-        Enterprise / Team &middot; Lifetime
-        <small>One-time payment &middot; Full Team workspace unlocked permanently</small>
+        Enterprise / Team · Lifetime
+        <span class="plan-meta">One-time payment · Lifetime Enterprise / Team access</span>
       </span>
-      <span class="plan-price">$349 once</span>
+      <span>$349 once</span>
     </button>
 
     <div id="msg"></div>
 
     <div class="legal">
-      <a href="https://www.freightandprofit.com/terms-of-service" target="_blank">Terms of Service</a> &middot;
-      <a href="https://www.freightandprofit.com/privacy-policy" target="_blank">Privacy Policy</a> &middot;
-      <a href="https://www.freightandprofit.com/refund-policy" target="_blank">Refund Policy</a>
+      <div>
+        <a href="https://www.freightandprofit.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a> ·
+        <a href="https://www.freightandprofit.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a> ·
+        <a href="https://www.freightandprofit.com/refund-policy" target="_blank" rel="noopener">Refund Policy</a>
+      </div>
       <div class="entity">
-        Operated by Sherlene Anicia Dalrymple &middot; Trinidad and Tobago<br />
+        Operated by Sherlene Anicia Dalrymple · Trinidad and Tobago<br />
         Billing &amp; Support: support.freightandprofit@gmail.com
       </div>
     </div>
   </div>
 
   <script>
-    const VALID_PRICES = [
+    const PLAN_MAP = {
+      '1': 'pri_01m84ss69zrk713341jf6eb795',
+      'solo_monthly': 'pri_01m84ss69zrk713341jf6eb795',
+      '2': 'pri_01m84saq5d9jv8q51e1pexn5r9',
+      'solo_lifetime': 'pri_01m84saq5d9jv8q51e1pexn5r9',
+      '3': 'pri_01m847x8y1btzy1zacptnv1jn2',
+      'enterprise_monthly': 'pri_01m847x8y1btzy1zacptnv1jn2',
+      '4': 'pri_01m847akfzp4rnkm1m1pgbnkw4',
+      'enterprise_lifetime': 'pri_01m847akfzp4rnkm1m1pgbnkw4'
+    };
+
+    const VALID_PRICES = new Set([
       'pri_01m84ss69zrk713341jf6eb795',
       'pri_01m84saq5d9jv8q51e1pexn5r9',
       'pri_01m847x8y1btzy1zacptnv1jn2',
       'pri_01m847akfzp4rnkm1m1pgbnkw4'
-    ];
+    ]);
 
     const params = new URLSearchParams(window.location.search);
-    const urlEmail = params.get('email') || '';
-    const urlUid = params.get('uid') || params.get('userId') || '';
-    const urlPriceId = params.get('priceId') || params.get('price_id') || params.get('pri') || '';
+    const emailParam = (params.get('email') || '').trim();
+    const uidParam = (params.get('uid') || params.get('userId') || '').trim();
+    const rawPlan = (params.get('plan') || params.get('priceId') || params.get('price_id') || '').trim();
 
-    if (urlEmail) document.getElementById('emailInput').value = urlEmail;
-    if (urlUid) document.getElementById('uidInput').value = urlUid;
+    if (emailParam) document.getElementById('emailInput').value = emailParam;
+    if (uidParam) document.getElementById('uidInput').value = uidParam;
 
-    Paddle.Initialize({
-      token: 'live_6d1c9d033eb61a3a642d45e31d3',
-      eventCallback: function(data) {
-        if (data.name === 'checkout.completed') {
-          document.getElementById('msg').textContent = 'Payment confirmed! Return to the Freight & Profit app and tap Refresh Account Status.';
-        }
-      }
-    });
+    function resolvePriceId(input) {
+      if (!input) return null;
+      if (PLAN_MAP[input]) return PLAN_MAP[input];
+      const cleaned = input.replace(/×/g, 'x');
+      if (VALID_PRICES.has(cleaned)) return cleaned;
+      return null;
+    }
 
     function startCheckout(priceId) {
       const email = document.getElementById('emailInput').value.trim();
@@ -211,11 +215,21 @@
       Paddle.Checkout.open(options);
     }
 
-    window.addEventListener('load', function() {
-      if (urlEmail && urlPriceId && VALID_PRICES.includes(urlPriceId)) {
+    Paddle.Initialize({
+      token: 'live_6d1c9d033eb61a3a642d45e31d3',
+      eventCallback: function(data) {
+        if (data.name === 'checkout.completed') {
+          document.getElementById('msg').textContent = 'Payment confirmed! Return to the Freight & Profit app and tap Refresh Account Status.';
+        }
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+      const targetPriceId = resolvePriceId(rawPlan);
+      if (targetPriceId && emailParam) {
         setTimeout(function() {
-          startCheckout(urlPriceId);
-        }, 350);
+          startCheckout(targetPriceId);
+        }, 300);
       }
     });
   </script>
